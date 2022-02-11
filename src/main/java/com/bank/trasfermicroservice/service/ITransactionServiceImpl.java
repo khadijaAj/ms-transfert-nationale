@@ -310,4 +310,36 @@ public class ITransactionServiceImpl implements ITransactionService {
 
 
     }
+
+
+
+
+	@Override
+	public Transaction getTransfertById(Long id) {
+		return transactionRepository.findById(id).get();
+	
+	}
+
+
+
+
+	@Override
+	public void saveTransfert(VirementRequestDto virementRequestDto) {
+		Transaction transaction=new Transaction();
+        transaction.setDateTransfert(new Date());
+        transaction.setStatus(getEtatTransfert(virementRequestDto.getAmount(),virementRequestDto.getOtp()));
+        transaction.setAmount(virementRequestDto.getAmount());
+        transaction.setRef_transfert(virementRequestDto.getRef_transfert());
+        transaction.setIdDonneur(virementRequestDto.getIdDonneur());
+        transaction.setIdBeneficiaire(virementRequestDto.getIdBeneficiaire());
+        transaction.setDateServir(virementRequestDto.getDateServir());
+        transaction.setTypeFrais(virementRequestDto.getTypeFrais());
+        transaction.setIdUser(virementRequestDto.getIdUser());
+        transaction.setTypeTransfert(virementRequestDto.getTypeTransfert());
+        transaction.setOtp(virementRequestDto.getOtp());
+        transaction.setNotification(virementRequestDto.getNotification());
+        transaction.setMotif(virementRequestDto.getMotif());
+        transactionRepository.save(transaction);
+		
+	}
 }

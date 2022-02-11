@@ -3,7 +3,10 @@ package com.bank.trasfermicroservice.web;
 import com.bank.trasfermicroservice.dtos.VirementRequestDto;
 import com.bank.trasfermicroservice.dtos.VirementToSomeOneElse;
 import com.bank.trasfermicroservice.entities.ClientProspec;
+import com.bank.trasfermicroservice.entities.Transaction;
 import com.bank.trasfermicroservice.service.ITransactionService;
+
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,5 +45,14 @@ public class AccountRestController {
     @PutMapping(path ="comptes/BlockTransaction/{id}")
     public  void virementmultiple(@PathVariable Long id){
         transactionService.blockTransaction(id);
+    }
+    @GetMapping(path = "/comptes/{id}")
+    public Transaction getTransfertById(@PathVariable Long id){
+        return transactionService.getTransfertById(id);
+    }
+    
+    @PostMapping(path ="/add")
+    public  void addTransfert(@RequestBody VirementRequestDto VirementRequestDto){
+        transactionService.saveTransfert(VirementRequestDto);
     }
 }

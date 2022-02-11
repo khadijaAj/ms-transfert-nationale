@@ -3,6 +3,7 @@ package com.bank.trasfermicroservice.service;
 import com.bank.trasfermicroservice.dtos.VirementRequestDto;
 import com.bank.trasfermicroservice.dtos.VirementToSomeOneElse;
 import com.bank.trasfermicroservice.entities.ClientProspec;
+import com.bank.trasfermicroservice.entities.Transaction;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ public interface ITransactionService {
     void blockTransaction(Long id);
     void virementEspeceToCompte(VirementRequestDto virementRequestDto,Long id);
     void virementEspeceTOEspece(VirementRequestDto virementRequestDto,Long idDonneur,Long idRecipient);
-
+    Transaction getTransfertById(Long id);
+    void saveTransfert(VirementRequestDto VirementRequestDto);
 
 }
