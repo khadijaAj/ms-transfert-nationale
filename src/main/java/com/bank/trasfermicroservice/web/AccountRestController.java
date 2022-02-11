@@ -46,7 +46,7 @@ public class AccountRestController {
     public  void virementmultiple(@PathVariable Long id){
         transactionService.blockTransaction(id);
     }
-    @GetMapping(path = "/comptes/{id}")
+    @GetMapping(path = "/transferts/{id}")
     public Transaction getTransfertById(@PathVariable Long id){
         return transactionService.getTransfertById(id);
     }
