@@ -1,5 +1,6 @@
 package com.bank.trasfermicroservice.web;
 
+import com.bank.trasfermicroservice.dtos.ClientProspectDTO;
 import com.bank.trasfermicroservice.dtos.VirementRequestDto;
 import com.bank.trasfermicroservice.dtos.VirementToSomeOneElse;
 import com.bank.trasfermicroservice.entities.ClientProspec;
@@ -54,5 +55,25 @@ public class AccountRestController {
     @PostMapping(path ="/add")
     public  void addTransfert(@RequestBody VirementRequestDto VirementRequestDto){
         transactionService.saveTransfert(VirementRequestDto);
+    }
+    
+    @GetMapping(path = "/clientProspec/")
+    public List<ClientProspec> getALLClientProspects(){
+        return transactionService.getAllClientProspects();
+    }
+    
+    @GetMapping(path = "/clientProspec/{id}")
+    public ClientProspec getClientProspecById(@PathVariable Long id){
+        return transactionService.getClientProspectById(id);
+    }
+    
+    @PostMapping(path ="/clientProspec/add")
+    public  void addClientProspec(@RequestBody ClientProspectDTO ClientProspectDTO){
+        transactionService.saveClientProspec(ClientProspectDTO);
+    }
+    
+    @PutMapping(path ="/clientProspect/update/{id}")
+    public  void addClientProspec(@PathVariable Long id, @RequestBody ClientProspectDTO ClientProspectDTO){
+        transactionService.updateClientProspect(id, ClientProspectDTO);
     }
 }

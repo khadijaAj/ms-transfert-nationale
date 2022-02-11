@@ -1,5 +1,6 @@
 package com.bank.trasfermicroservice.service;
 
+import com.bank.trasfermicroservice.dtos.ClientProspectDTO;
 import com.bank.trasfermicroservice.dtos.VirementRequestDto;
 import com.bank.trasfermicroservice.dtos.VirementToSomeOneElse;
 import com.bank.trasfermicroservice.entities.ClientProspec;
@@ -340,6 +341,61 @@ public class ITransactionServiceImpl implements ITransactionService {
         transaction.setNotification(virementRequestDto.getNotification());
         transaction.setMotif(virementRequestDto.getMotif());
         transactionRepository.save(transaction);
+		
+	}
+
+
+
+
+	@Override
+	public ClientProspec getClientProspectById(Long id) {
+		// TODO Auto-generated method stub
+		return clientProspecRespository.findById(id).get();
+	}
+
+
+
+
+	@Override
+	public void saveClientProspec(com.bank.trasfermicroservice.dtos.ClientProspectDTO ClientProspectDTO) {
+		ClientProspec clientProspec = new ClientProspec();
+		clientProspec.setCin(ClientProspectDTO.getCin());
+		clientProspec.setNom(ClientProspectDTO.getNom());
+		clientProspec.setPrenom(ClientProspectDTO.getPrenom());
+		clientProspec.setTelephone(ClientProspectDTO.getTelephone());
+		clientProspecRespository.save(clientProspec);
+	}
+
+
+
+
+	@Override
+	public List<ClientProspec> getAllClientProspects() {
+		
+		return clientProspecRespository.findAll() ;
+	}
+
+
+
+
+	@Override
+	public void deleteClientProspec(Long id) {
+		
+	}
+
+
+
+
+	
+	@Override
+	public void updateClientProspect(Long id, ClientProspectDTO ClientProspectDTO) {
+		ClientProspec clientProsp = new ClientProspec();
+		clientProsp.setId(id);
+		clientProsp.setNom(ClientProspectDTO.getNom());
+		clientProsp.setCin(ClientProspectDTO.getCin());
+		clientProsp.setPrenom(ClientProspectDTO.getPrenom());
+		clientProsp.setTelephone(ClientProspectDTO.getTelephone());
+		clientProspecRespository.save(clientProsp);
 		
 	}
 }

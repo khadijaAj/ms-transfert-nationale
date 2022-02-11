@@ -1,5 +1,6 @@
 package com.bank.trasfermicroservice.service;
 
+import com.bank.trasfermicroservice.dtos.ClientProspectDTO;
 import com.bank.trasfermicroservice.dtos.VirementRequestDto;
 import com.bank.trasfermicroservice.dtos.VirementToSomeOneElse;
 import com.bank.trasfermicroservice.entities.ClientProspec;
@@ -16,5 +17,10 @@ public interface ITransactionService {
     void virementEspeceTOEspece(VirementRequestDto virementRequestDto,Long idDonneur,Long idRecipient);
     Transaction getTransfertById(Long id);
     void saveTransfert(VirementRequestDto VirementRequestDto);
+    ClientProspec getClientProspectById(Long id);
+    List<ClientProspec> getAllClientProspects();
+    void saveClientProspec(ClientProspectDTO ClientProspectDTO);
+    void deleteClientProspec(Long id);
+    void updateClientProspect(Long id, ClientProspectDTO ClientProspectDTO);
 
 }
