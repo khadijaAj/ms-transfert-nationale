@@ -398,4 +398,12 @@ public class ITransactionServiceImpl implements ITransactionService {
 		clientProspecRespository.save(clientProsp);
 		
 	}
+
+
+
+
+	@Override
+	public List<Transaction> getAllTransferts() {
+		return transactionRepository.findAll();
+	}
 }

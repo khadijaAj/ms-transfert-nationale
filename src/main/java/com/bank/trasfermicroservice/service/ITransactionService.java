@@ -19,6 +19,7 @@ public interface ITransactionService {
     void saveTransfert(VirementRequestDto VirementRequestDto);
     ClientProspec getClientProspectById(Long id);
     List<ClientProspec> getAllClientProspects();
+    List<Transaction> getAllTransferts();
     void saveClientProspec(ClientProspectDTO ClientProspectDTO);
     void deleteClientProspec(Long id);
     void updateClientProspect(Long id, ClientProspectDTO ClientProspectDTO);

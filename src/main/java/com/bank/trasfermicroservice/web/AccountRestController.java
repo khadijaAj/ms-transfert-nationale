@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins ="*")
 @RestController
 @RequestMapping(path = "/transfert")
 public class AccountRestController {
@@ -51,6 +52,11 @@ public class AccountRestController {
     public Transaction getTransfertById(@PathVariable Long id){
         return transactionService.getTransfertById(id);
     }
+    @GetMapping(path ="/transfers/")
+    public List<Transaction> getAllTransferts(){
+    	return transactionService.getAllTransferts();
+    }
+    
     
     @PostMapping(path ="/add")
     public  void addTransfert(@RequestBody VirementRequestDto VirementRequestDto){
