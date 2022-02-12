@@ -28,28 +28,28 @@ public class AccountRestController {
     }
 
 
-    @PutMapping(path ="comptes/virement")
+    @PostMapping(path ="comptes/virement")
     public  void virement(@RequestBody VirementRequestDto virementRequestDto){
         transactionService.virementCompteToCompte(virementRequestDto);
     }
-    @PutMapping(path ="comptes/virementmultiple")
+    @PostMapping(path ="comptes/virementmultiple")
     public  void virementmultiple(@RequestBody List<VirementRequestDto> virementRequestDto){
             transactionService.virementMultiple(virementRequestDto);
     }
 
-    @PutMapping(path ="comptes/VirementCompteToEspace/{id}")
+    @PostMapping(path ="comptes/VirementCompteToEspace/{id}")
     public  void virementCompteToEspace(@RequestBody VirementRequestDto virement,@PathVariable Long id){
         transactionService.virementCompteToEspece(virement,id);
     }
-    @PutMapping(path ="comptes/VirementEspeceToCompte/{id}")
+    @PostMapping(path ="comptes/VirementEspeceToCompte/{id}")
     public  void virementEspeceToCompte(@RequestBody VirementRequestDto virement,@PathVariable Long id){
         transactionService.virementEspeceToCompte(virement,id);
     }
-    @PutMapping(path ="comptes/VirementEpeceToEspece/{idDonneur}/{idRecepteur}")
+    @PostMapping(path ="comptes/VirementEpeceToEspece/{idDonneur}/{idRecepteur}")
     public  void virementEspeceToEspace(@RequestBody VirementRequestDto virement,@PathVariable Long idDonneur,@PathVariable Long idRecepteur){
         transactionService.virementEspeceTOEspece(virement,idDonneur,idRecepteur);
     }
-    @PutMapping(path ="comptes/BlockTransaction/{id}")
+    @PostMapping(path ="comptes/BlockTransaction/{id}")
     public  void virementmultiple(@PathVariable Long id){
         transactionService.blockTransaction(id);
     }
