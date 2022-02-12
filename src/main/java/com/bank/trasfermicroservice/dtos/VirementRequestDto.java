@@ -1,5 +1,6 @@
 package com.bank.trasfermicroservice.dtos;
 
+import com.bank.trasfermicroservice.entities.Transaction;
 import com.bank.trasfermicroservice.enums.State;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,4 +27,9 @@ public class VirementRequestDto {
     @Enumerated(EnumType.STRING)
     private State status;
     private double amount;
+   
+    public void virementRequestDto(Transaction transaction) {
+		
+		
+	}
 }

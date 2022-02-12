@@ -11,6 +11,8 @@ import com.bank.trasfermicroservice.exceptions.ApiRequestException;
 import com.bank.trasfermicroservice.repositories.ClientProspecRespository;
 import com.bank.trasfermicroservice.repositories.CompteRepository;
 import com.bank.trasfermicroservice.repositories.TransactionRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Calendar;
@@ -23,6 +25,7 @@ public class ITransactionServiceImpl implements ITransactionService {
 
     private  CompteRepository compteRepository;
     private TransactionRepository transactionRepository;
+    @Autowired
     private ClientProspecRespository clientProspecRespository;
     private boolean verifMontantClient;
     private boolean verifMontantAgence;
@@ -405,5 +408,14 @@ public class ITransactionServiceImpl implements ITransactionService {
 	@Override
 	public List<Transaction> getAllTransferts() {
 		return transactionRepository.findAll();
+	}
+
+
+
+
+	@Override
+	public List<ClientProspec> getClientProspecByGSM(String Telephone) {
+		
+		return clientProspecRespository.findByTelephone(Telephone);
 	}
 }

@@ -23,5 +23,6 @@ public interface ITransactionService {
     void saveClientProspec(ClientProspectDTO ClientProspectDTO);
     void deleteClientProspec(Long id);
     void updateClientProspect(Long id, ClientProspectDTO ClientProspectDTO);
+    List<ClientProspec> getClientProspecByGSM(String Telephone);
 
 }

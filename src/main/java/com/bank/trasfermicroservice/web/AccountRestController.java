@@ -5,9 +5,10 @@ import com.bank.trasfermicroservice.dtos.VirementRequestDto;
 import com.bank.trasfermicroservice.dtos.VirementToSomeOneElse;
 import com.bank.trasfermicroservice.entities.ClientProspec;
 import com.bank.trasfermicroservice.entities.Transaction;
+import com.bank.trasfermicroservice.repositories.ClientProspecRespository;
 import com.bank.trasfermicroservice.service.ITransactionService;
 
-
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -16,6 +17,10 @@ import java.util.List;
 @RestController
 @RequestMapping(path = "/transfert")
 public class AccountRestController {
+	
+	@Autowired
+	private ClientProspecRespository clientProspecRepository;
+	
     private ITransactionService transactionService;
 
     public AccountRestController(ITransactionService transactionService) {
@@ -81,5 +86,11 @@ public class AccountRestController {
     @PutMapping(path ="/clientProspect/update/{id}")
     public  void addClientProspec(@PathVariable Long id, @RequestBody ClientProspectDTO ClientProspectDTO){
         transactionService.updateClientProspect(id, ClientProspectDTO);
+    }
+    
+    @RequestMapping(value = "/ClientProspec/{telephone}", method = RequestMethod.GET)
+    public List<ClientProspec> getClientProspecByGSM(@PathVariable String telephone){
+       return transactionService.getClientProspecByGSM(telephone);
+        
     }
 }

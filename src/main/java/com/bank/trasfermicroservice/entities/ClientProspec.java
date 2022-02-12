@@ -19,5 +19,7 @@ public class ClientProspec {
     private  String nom;
     private  String prenom;
     private  String cin;
-    private  String Telephone;
+    private  String telephone;
+    
+    
 }
